@@ -10,11 +10,13 @@ router.get('/', function(req, res) {
   });
 });
 
+
 router.post('/add-task', function(req, res) {
   models.Tasks
         .build({
-            title: req.body.taskName,
-            completed: false})
+            business_unit: req.body.taskName,
+            lab_name: false,
+            email: req.body.email})
         .save()
         .then(function() {
           models.Tasks.findAll({}).then(function(taskList) {

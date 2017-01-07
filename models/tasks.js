@@ -2,13 +2,17 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Tasks = sequelize.define("Tasks", {
-        title: {
+        business_unit: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        completed: {
+        lab_name: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }, {
        tableName: 'Tasks'
