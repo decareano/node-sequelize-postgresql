@@ -4,15 +4,15 @@ module.exports = function(sequelize, DataTypes) {
     var Tasks = sequelize.define("Tasks", {
         business_unit: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         lab_name: {
             type: DataTypes.BOOLEAN,
-            allowNull: true
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         }
     }, {
        tableName: 'Tasks'
