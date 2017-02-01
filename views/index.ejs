@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tasks</title>
+
+    <title>Inventory</title>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -9,6 +11,163 @@
 
     <div id="task-add-div">
         <form action="/add-task" id="addTaskForm" method="post" role="form">
+
+            <label>title:</label>
+            <input name="title" type="text" placeholder="E.g. Code more" class="form-control">
+            <label>completed </label>
+            <input name="completed" type="text" placeholder="E.g. Code more" class="form-control">
+            
+           
+            <div>
+	<input type="submit" class="btn btn-primary" value="Submit"/>
+    </div> 
+  
+ <!-- <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+       <div class="container-fluid">
+       <div class="navbar-header">
+            <h1>Lab Inventory Spreadsheet Form:</h1>
+       <div id="Success" style="display:none">Thanks for submitting the form</div>
+
+       <form id="bugForm" action="" method="post" enctype="multipart/form-data">
+         <fieldset>
+            <div class="form-group">
+                  <label for="name">business_unit:</label>
+                  <input type="name" class="form-control" name="Name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                  <label for="email">lab_name:</label>
+                  <input type="email" class="form-control" name="Email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">location:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">validated:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">computer_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">bmrn_asset:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">pc-make_model:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">os:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">notes:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">system_owner:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">vendor:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">model_instrument_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_friendly_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_validation_id:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_software:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">backup_data_format:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">nic_address:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">ethernet_jack:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">ip_address_vlan:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">image:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">backup:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">decommisioned:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">last_verified:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+            
+            <div>
+                  <label for="profilepic">Add a Screenshot:</label>
+                  <input type="file" name="profilepic" id="profilepic">
+            </div>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+         </fieldset>
+      </form>
+      </div>
+   
+=======
             <label>Business Unit </label>
             <input name="taskName" type="text" placeholder="E.g. Code more" class="form-control">
             <label>Lab Name </label>
@@ -24,10 +183,11 @@
 	
  
       
+
    
 
     <!--<div id="task-list">
->>>>>>> 307b28cbf052965b2d3703dca9d83bc8726075d7
+
       <ul>
         <% if(tasks) { %>
          <% tasks.forEach(function(task) { %>
@@ -37,7 +197,7 @@
          <% } %>
         
       </ul>
-<<<<<<< HEAD
+
     </div>  -->
 
   </body>

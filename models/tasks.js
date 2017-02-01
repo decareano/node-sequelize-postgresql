@@ -1,24 +1,21 @@
 "use strict"
 
 module.exports = function(sequelize, DataTypes) {
-    var Tasks = sequelize.define("Tasks", {
-        business_unit: {
+
+    var my_db = sequelize.define("test_marcelo", {
+        title: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        lab_name: {
+	},
+        completed: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+            
+	
+
     }, {
-       tableName: 'Tasks'
+       tableName: 'test_marcelo'
     });
 
-    return Tasks;
+    return my_db;
 }
 
 
