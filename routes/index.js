@@ -10,11 +10,15 @@ router.get('/', function(req, res) {
   });
 });
 
+
 router.post('/add-task', function(req, res) {
   models.test_marcelo
         .build({
+
             title: req.body.title,
             completed: false})
+
+           
         .save()
         .then(function() {
           models.test_marcelo.findAll({}).then(function(taskList) {
