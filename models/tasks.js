@@ -1,6 +1,7 @@
 "use strict"
 
 module.exports = function(sequelize, DataTypes) {
+<<<<<<< HEAD
     var my_db = sequelize.define("lab_inventory", {
         
     	business_unit: {
@@ -8,6 +9,12 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	lab_name: {
 		type: DataTypes.STRING,
+=======
+
+    var my_db = sequelize.define("test_marcelo", {
+        title: {
+            type: DataTypes.STRING,
+>>>>>>> a7156de50c24381264aa0352c6fd5966578571b2
 	},
 	location: {
 		type: DataTypes.STRING,
@@ -15,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
 	validated: {
             type: DataTypes.BOOLEAN,
             
+<<<<<<< HEAD
 	},
 	computer_name: {
             type: DataTypes.STRING,
@@ -96,6 +104,12 @@ module.exports = function(sequelize, DataTypes) {
 			
 }, {
        tableName: 'lab_inventory'
+=======
+	
+
+    }, {
+       tableName: 'test_marcelo'
+>>>>>>> a7156de50c24381264aa0352c6fd5966578571b2
     });
 
     return my_db;

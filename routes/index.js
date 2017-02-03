@@ -10,9 +10,11 @@ router.get('/', function(req, res) {
   });
 });
 
+
 router.post('/add-task', function(req, res) {
   models.lab_inventory
         .build({
+
             	
 		business_unit: req.body.business_unit,
 		lab_name: req.body.lab_name,
@@ -38,6 +40,7 @@ router.post('/add-task', function(req, res) {
 		decommisioned: req.body.decommisioned,
 		last_verified: req.body.last_verified
 		})
+
         .save()
         .then(function() {
           models.lab_inventory.findAll({}).then(function(taskList) {
