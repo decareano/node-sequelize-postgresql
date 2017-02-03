@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	computer_name: {
             type: DataTypes.STRING,
-	allowNull: true
+	
             
 	},
 	bmrn_asset: {
