@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
         
     	business_unit: {
 		type: DataTypes.STRING,
+		notEmpty: true
 	},
 	lab_name: {
 		type: DataTypes.STRING,
@@ -16,10 +17,11 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	validated: {
             type: DataTypes.BOOLEAN,
-        
+
 	},
 	computer_name: {
             type: DataTypes.STRING,
+            notNull: true
 	
         },
 	bmrn_asset: {
