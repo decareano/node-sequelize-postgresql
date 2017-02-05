@@ -10,21 +10,20 @@ module.exports = function(sequelize, DataTypes) {
 	},
 	lab_name: {
 		type: DataTypes.STRING,
+
 	},
 	location: {
 		type: DataTypes.STRING,
 	},
 	validated: {
             type: DataTypes.BOOLEAN,
-            
 
 	},
 	computer_name: {
             type: DataTypes.STRING,
             notNull: true
 	
-            
-	},
+        },
 	bmrn_asset: {
             type: DataTypes.STRING,
             
