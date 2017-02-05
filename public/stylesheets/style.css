@@ -6,3 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
+
+.form-control {
+	display: block;
+	width: 40%;
+	height: 36px;
+
+}
+
+/*.navbar-inverse {
+	background-color: #00FFFF
+
+}*/
+
+h1 {
+	color: white;
+}

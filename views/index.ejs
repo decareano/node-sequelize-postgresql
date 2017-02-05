@@ -1,94 +1,118 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <title>Inventory</title>
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <nav class="navbar navbar-inverse"
+    <p class="navbar-text"></p>
     <h1>Lab Inventory Form</h1>
-
+    </nav>
     <div id="task-add-div">
+
+  
+  
+
         <form action="/add-task" id="addTaskForm" method="post" role="form">
-<<<<<<< HEAD
-            <label>business_unit:</label>
-            <input type="text" class="form-control" name="business_unit" placeholder="Enter your name"><br>
-            <label>lab_name:</label>
-            <input type="text" class="form-control" name="lab_name" placeholder="Enter your email"><br>
-            <label>location:</label>
-            <input type="text" class="form-control" name="location" placeholder="Enter a short description about the problem"><br>
-            <label>validated:</label>
-            <input type="validated" class="form-control" name="validated" placeholder="Enter a short description about the problem"><br>
-            <label>computer_name:</label>
-            <input type="computer_name" class="form-control" name="computer_name" placeholder="Enter a short description about the problem"><br>
-	    <label>bmrn_asset:</label>
-            <input type="numeric" class="form-control" name="bmrn_asset" placeholder="Enter a short description about the problem"><br>
-	    <label>pc_make_model:</label>
-            <input type="pc_make_model" class="form-control" name="pc_make_model" placeholder="Enter a short description about the problem"><br>
 
-	    <label>os:</label>
-            <input type="os" class="form-control" name="os" placeholder="Enter a short description about the problem"><br>
-=======
+            <label>Business Unit:</label>
+            <input type="text" class="form-control" name="business_unit" placeholder="Enter your unit name"><br>
+            <label>Lab Name:</label>
+            <input type="text" class="form-control" name="lab_name" placeholder="Enter your lab name"><br>
+            <label>Location:</label>
+            <input type="text" class="form-control" name="location" placeholder="Enter a location"><br>
+            <label>Validated:</label>
+            <input type="validated" class="form-control" name="validated" placeholder="Yes or No"><br>
+            <label>Computer Name:</label>
+            <input type="computer_name" class="form-control" name="computer_name" placeholder="Enter a computer name"><br>
+	    <label>BMRN Asset:</label>
+            <input type="numeric" class="form-control" name="bmrn_asset" placeholder="Enter an asset number here"><br>
+	    <label>PC Make Model:</label>
+            <input type="pc_make_model" class="form-control" name="pc_make_model" placeholder="Enter pc model"><br>
 
-            <label>title:</label>
-            <input name="title" type="text" placeholder="E.g. Code more" class="form-control">
-            <label>completed </label>
-            <input name="completed" type="text" placeholder="E.g. Code more" class="form-control">
->>>>>>> a7156de50c24381264aa0352c6fd5966578571b2
+	    <label>OS:</label>
+            <input type="os" class="form-control" name="os" placeholder="Enter an OS for your PC"><br>
+
             
-                  <label>notes:</label>
-                  <input type="notes" class="form-control" name="notes" placeholder="Enter a short description about the problem"><br>
+                  <label>Notes:</label>
+                  <input type="notes" class="form-control" name="notes" placeholder="Enter a short description"><br>
             
-                  <label>system_owner:</label>
-                  <input type="system_owner" class="form-control" name="system_owner" placeholder="Enter a short description about the problem"><br>
+                  <label>System Owner:</label>
+                  <input type="system_owner" class="form-control" name="system_owner" placeholder="Enter name of person who owns the instrument"><br>
             
 		
-                  <label>vendor:</label>
-                  <input type="vendor" class="form-control" name="vendor" placeholder="Enter a short description about the problem"><br>
+                  <label>Vendor:</label>
+                  <input type="vendor" class="form-control" name="vendor" placeholder="Enter name of Instrument Vendor"><br>
             
-                  <label>model_instrument_name:</label>
-                  <input type="model_instrument_name" class="form-control" name="model_instrument_name" placeholder="Enter a short description about the problem"><br>
+                  <label>Model Instrument Name:</label>
+                  <input type="model_instrument_name" class="form-control" name="model_instrument_name" placeholder="Enter a name for your instrument model"><br>
             
-                  <label>instrument_friendly_name:</label>
-                  <input type="instrument_friendly_name" class="form-control" name="instrument_friendly_name" placeholder="Enter a short description about the problem"><br>
+                  <label>Instrument Friendly Name:</label>
+                  <input type="instrument_friendly_name" class="form-control" name="instrument_friendly_name" placeholder="Enter a short name for instrument"><br>
             
-                  <label>instrument_validation_id:</label>
-                  <input type="instrument_validation_id" class="form-control" name="instrument_validation_id" placeholder="Enter a short description about the problem"><br>
+                  <label>Instrument Validation ID:</label>
+                  <input type="instrument_validation_id" class="form-control" name="instrument_validation_id" placeholder="Enter a validation ID if it exists"><br>
             
-                  <label>instrument_software:</label>
-                  <input type="instrument_software" class="form-control" name="instrument_software" placeholder="Enter a short description about the problem"><br>
+                  <label>Instrument Software:</label>
+                  <input type="instrument_software" class="form-control" name="instrument_software" placeholder="Enter name of software"><br>
             
-                  <label>backup_data_format:</label>
-                  <input type="backup_data_format" class="form-control" name="backup_data_format" placeholder="Enter a short description about the problem"><br>
-            
+                  <label>Backup Data Format:</label>
+                  <input type="backup_data_format" class="form-control" name="backup_data_format" placeholder="Enter backup format"><br>
+         
 		
-                  <label>nic_address:</label>
-                  <input type="nic_address" class="form-control" name="nic_address" placeholder="Enter a short description about the problem"><br>
+                  <label>Nic Address:</label>
+                  <input type="nic_address" class="form-control" name="nic_address" placeholder="Enter a NIC address for your instrument"><br>
             
-                  <label>ethernet_jack:</label>
-                  <input type="ethernet_jack" class="form-control" name="ethernet_jack" placeholder="Enter a short description about the problem"><br>
+                  <label>Ethernet Jack:</label>
+                  <input type="ethernet_jack" class="form-control" name="ethernet_jack" placeholder="Enter a jack number"><br>
             
-                  <label>ip_address_vlan:</label>
-                  <input type="ip_address_vlan" class="form-control" name="ip_address_vlan" placeholder="Enter a short description about the problem"><br>
+                  <label>IP Address VLAN:</label>
+                  <input type="ip_address_vlan" class="form-control" name="ip_address_vlan" placeholder="Enter a VLAN"><br>
             
-                  <label>image:</label>
-                  <input type="image" class="form-control" name="image" placeholder="Enter a short description about the problem"><br>
+                  <label>Image:</label>
+                  <input type="image" class="form-control" name="image" placeholder="Enter an Image backup"><br>
             
-                  <label>backup:</label>
-                  <input type="backup" class="form-control" name="backup" placeholder="Enter a short description about the problem"><br>
+                  <label>Backup:</label>
+                  <input type="backup" class="form-control" name="backup" placeholder="Enter a location for the backup"><br>
            
-                  <label>decommisioned:</label>
-                  <input type="decommisioned" class="form-control" name="decommisioned" placeholder="Enter a short description about the problem"><br>
+                  <label>Decommisioned:</label>
+                  <input type="decommisioned" class="form-control" name="decommisioned" placeholder="Enter note when system is decommisioned"><br>
             
-                  <label>last_verified:</label>
-                  <input type="last_verified" class="form-control" name="last_verified" placeholder="Enter a short description about the problem"><br>
+                  <label>Last Verified:</label>
+                  <input type="last_verified" class="form-control" name="last_verified" placeholder="Enter a name of the person who verified the data entry"><br>
            
                   <label>Add a Screenshot:</label>
                   <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic"><br>
             <div>
 	<input type="submit" class="btn btn-primary" value="Submit"/>
-    </div> 
+  <div class="row">
+  
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+</div>
+
+  </div> 
   
  <!-- <title>Bootstrap Example</title>
   <meta charset="utf-8">
