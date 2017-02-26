@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <title>Inventory</title>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse"
+    <p class="navbar-text"></p>
+    <h1>Lab Inventory Form</h1>
+    </nav>
+    <div id="task-add-div">
+
+  
+  
+
+        <form action="/add-task" id="addTaskForm" method="post" role="form">
+
+            <label>Business Unit:</label>
+            <input type="text" class="form-control" name="business_unit" placeholder="Enter your unit name"><br>
+            <label>Lab Name:</label>
+            <input type="text" class="form-control" name="lab_name" placeholder="Enter your lab name"><br>
+            <label>Location:</label>
+            <input type="text" class="form-control" name="location" placeholder="Enter a location"><br>
+            <label>Validated:</label>
+            <input type="validated" class="form-control" name="validated" placeholder="Yes or No"><br>
+            <label>Computer Name:</label>
+            <input type="computer_name" class="form-control" name="computer_name" placeholder="Enter a computer name"><br>
+	    <label>BMRN Asset:</label>
+            <input type="numeric" class="form-control" name="bmrn_asset" placeholder="Enter an asset number here"><br>
+	    <label>PC Make Model:</label>
+            <input type="pc_make_model" class="form-control" name="pc_make_model" placeholder="Enter pc model"><br>
+
+	    <label>OS:</label>
+            <input type="os" class="form-control" name="os" placeholder="Enter an OS for your PC"><br>
+
+            
+                  <label>Notes:</label>
+                  <input type="notes" class="form-control" name="notes" placeholder="Enter a short description"><br>
+            
+                  <label>System Owner:</label>
+                  <input type="system_owner" class="form-control" name="system_owner" placeholder="Enter name of person who owns the instrument"><br>
+            
+		
+                  <label>Vendor:</label>
+                  <input type="vendor" class="form-control" name="vendor" placeholder="Enter name of Instrument Vendor"><br>
+            
+                  <label>Model Instrument Name:</label>
+                  <input type="model_instrument_name" class="form-control" name="model_instrument_name" placeholder="Enter a name for your instrument model"><br>
+            
+                  <label>Instrument Friendly Name:</label>
+                  <input type="instrument_friendly_name" class="form-control" name="instrument_friendly_name" placeholder="Enter a short name for instrument"><br>
+            
+                  <label>Instrument Validation ID:</label>
+                  <input type="instrument_validation_id" class="form-control" name="instrument_validation_id" placeholder="Enter a validation ID if it exists"><br>
+            
+                  <label>Instrument Software:</label>
+                  <input type="instrument_software" class="form-control" name="instrument_software" placeholder="Enter name of software"><br>
+            
+                  <label>Backup Data Format:</label>
+                  <input type="backup_data_format" class="form-control" name="backup_data_format" placeholder="Enter backup format"><br>
+         
+		
+                  <label>Nic Address:</label>
+                  <input type="nic_address" class="form-control" name="nic_address" placeholder="Enter a NIC address for your instrument"><br>
+            
+                  <label>Ethernet Jack:</label>
+                  <input type="ethernet_jack" class="form-control" name="ethernet_jack" placeholder="Enter a jack number"><br>
+            
+                  <label>IP Address VLAN:</label>
+                  <input type="ip_address_vlan" class="form-control" name="ip_address_vlan" placeholder="Enter a VLAN"><br>
+            
+                  <label>Image:</label>
+                  <input type="image" class="form-control" name="image" placeholder="Enter an Image backup"><br>
+            
+                  <label>Backup:</label>
+                  <input type="backup" class="form-control" name="backup" placeholder="Enter a location for the backup"><br>
+           
+                  <label>Decommisioned:</label>
+                  <input type="decommisioned" class="form-control" name="decommisioned" placeholder="Enter note when system is decommisioned"><br>
+            
+                  <label>Last Verified:</label>
+                  <input type="last_verified" class="form-control" name="last_verified" placeholder="Enter a name of the person who verified the data entry"><br>
+           
+                  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic"><br>
+            <div>
+	<input type="submit" class="btn btn-primary" value="Submit"/>
+  <div class="row">
+  
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+  <div class="col-sm-4">
+  <label>Add a Screenshot:</label>
+                  <input type="Add a Screenshot" name="Add a Screenshot" id="profilepic">
+                  </div>
+</div>
+
+  </div> 
+  
+ <!-- <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+       <div class="container-fluid">
+       <div class="navbar-header">
+            <h1>Lab Inventory Spreadsheet Form:</h1>
+       <div id="Success" style="display:none">Thanks for submitting the form</div>
+
+       <form id="bugForm" action="" method="post" enctype="multipart/form-data">
+         <fieldset>
+            <div class="form-group">
+                  <label for="name">business_unit:</label>
+                  <input type="name" class="form-control" name="Name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                  <label for="email">lab_name:</label>
+                  <input type="email" class="form-control" name="Email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">location:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">validated:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">computer_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">bmrn_asset:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">pc-make_model:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">os:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">notes:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">system_owner:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">vendor:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">model_instrument_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_friendly_name:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_validation_id:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">instrument_software:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">backup_data_format:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">nic_address:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">ethernet_jack:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">ip_address_vlan:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">image:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">backup:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">decommisioned:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+
+            <div class="form-group">
+                  <label for="description">last_verified:</label>
+                  <input type="description" class="form-control" name="Description" placeholder="Enter a short description about the problem">
+            </div>
+            
+            <div>
+                  <label for="profilepic">Add a Screenshot:</label>
+                  <input type="file" name="profilepic" id="profilepic">
+            </div>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+         </fieldset>
+      </form>
+      </div>
+   
+=======
+            <label>Business Unit </label>
+            <input name="taskName" type="text" placeholder="E.g. Code more" class="form-control">
+            <label>Lab Name </label>
+            <input name="taskName" type="text" placeholder="E.g. Code more" class="form-control">
+            <label for="email">Email:</label>
+            <input name="email" class="form-control" name="Email" placeholder="Enter your email">
+           
+            <div>
+                <button type="submit"><strong>Submit</strong></button>
+            </div>
+        </form>
+    </div> 
+	
+ 
+      
+
+   
+
+    <!--<div id="task-list">
+
+      <ul>
+        <% if(tasks) { %>
+         <% tasks.forEach(function(task) { %>
+             <li><%= task.business_unit, task.email %></li>
+
+           <% }) %>
+         <% } %>
+        
+      </ul>
+
+    </div>  -->
+
+  </body>
+</html>
+
+
