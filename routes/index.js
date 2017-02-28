@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
   //});
 });
 
-router.post('/login', function(req, res) {
+router.get('/login', function(req, res) {
 	res.render('login_form_username');
 	// var user_name=req.body.user;
  //    var password=req.body.password;
@@ -22,11 +22,11 @@ router.post('/login', function(req, res) {
 	// function myFunction() {
  //    alert("myFunction");
 	// }
-	function myFunction() {
+	// function myFunction() {
 
-    document.getElementById("myLink").innerHTML = location.href;
+ //    document.getElementById("myLink").innerHTML = location.href;
 
-	}
+	// }
 });
 
 
