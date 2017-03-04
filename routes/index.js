@@ -68,7 +68,7 @@ router.post('/add-task', function(req, res) {
         .save()
         .then(function() {
           models.lab_inventory.findAll({}).then(function(taskList) {
-                res.render('index', {tasks: taskList});
+                res.render('form_page', {tasks: taskList});
             });
         });
 });
