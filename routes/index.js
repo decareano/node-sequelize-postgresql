@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
-
 var models = require("../models");
+var passport = require('passport');
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -14,24 +14,12 @@ router.get('/', function(req, res) {
 
 router.get('/login', function(req, res) {
 	res.render('login_form_username');
-	// var user_name=req.body.user;
- //    var password=req.body.password;
- //    console.log("User name = "+user_name+", password is "+password);
- //  res.end("yes");
-	
-	// function myFunction() {
- //    alert("myFunction");
-	// }
-	// function myFunction() {
 
- //    document.getElementById("myLink").innerHTML = location.href;
-
-	// }
 });
 
 
 
-//router.post('/login1'). //received the data for authentication purposes
+
 
 
 
