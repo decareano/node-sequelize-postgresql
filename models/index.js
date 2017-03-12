@@ -3,6 +3,7 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
+var GetUsers = require("./User.js")
 var sequelize = new Sequelize(process.env.POSTGRESQL_LOCAL_DB, "", "", {
     host: process.env.POSTGRESQL_LOCAL_HOST,
     dialect: 'postgres',
@@ -37,5 +38,11 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+var myusers = GetUsers(sequelize, Sequelize.DataTypes);
+module.exports = {
+    db: db, 
+    myusers: myusers
+};
 
-module.exports = db;
+
+

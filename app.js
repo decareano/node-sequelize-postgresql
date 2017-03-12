@@ -1,20 +1,79 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var logger = require('morgan');51
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
+//var myUsers = require('./User.js');
+//var Sequelize = require('sequelize');
+var myusers = require('./models/index.js').myusers;
+
+// var User = sequelize.define('User', 
+// {
+//   username: DataTypes.STRING,
+//   password: DataTypes.STRING
+// })
+
+// User.sync();
+
+//var user = User.create({ username: "admin", password: "bolognese" });
+
+
+
+//var Model = require('../model/models.js');
 
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
+//     passport.use(new LocalStrategy({
+//         usernameField: 'username',
+//         passwordField: 'password'
+//     },
+//     (username, password, done) => {
+//         //log.debug("Login process:", username);
+//         return User.one("SELECT  username, password, id " +
+//             "FROM users " +
+//             "WHERE username=$1 AND password=$2", [username, password])
+//         .then((result)=> {
+//             return done(null, result);
+//         })
+//         .catch((err) => {
+//             log.error("/login: " + err);
+//             return done(null, false, {message:'Wrong user name or password'});
+//         });
+//     }));
+
+// passport.serializeUser((user, done)=>{
+//     //log.debug("serialize ", user);
+//     done(null, user.user_id);
+// });
+
+// passport.deserializeUser((id, done)=>{
+//     //log.debug("deserialize ", id);
+//     User.one("SELECT username, password, id FROM users " +
+//             "WHERE id = $1", [id])
+//     .then((user)=>{
+//       //log.debug("deserializeUser ", user);
+//       done(null, user);
+//     })
+//     .catch((err)=>{
+//       done(new Error(`User with the id ${id} does not exist`));
+//     })
+// });
+
+
+
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    public.users.findById({username: username}, function (err, user) {
-        console.log(users);
+    console.log("before",  myusers.name);
+    //console.log("userskeys", Object.keys(myusers));
+    
+    
+    myusers.findAll({username: username}).then(function (err, user) {
+        console.log("before", user);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
@@ -22,7 +81,7 @@ passport.use(new LocalStrategy(
       if (!user.validPassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
-      return done(null, user);
+      return done(null, "hello");
     });
   }
 ));
@@ -95,3 +154,5 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+//module.exports.User = User;
+
