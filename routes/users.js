@@ -27,6 +27,7 @@ router.get('/login', function(req, res) {
 
 
 router.post('/login1', passport.authenticate('local' , { session: true }), function(req, res) {
+  console.log(models);
   models.users
         .build({
 
