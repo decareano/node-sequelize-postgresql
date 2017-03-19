@@ -1,20 +1,49 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var logger = require('morgan');51
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
+var db = require('./models');
+//var myUsers = require('./User.js');
+var Sequelize = require('sequelize');
+//Sequelize.prototype.authenticate = function() 
+db
+  .sequelize
+  .sync()
+  // .complete(function(err){
+    // .sequelize
+    // .prototype
+  .then(function(err) {
+
+  if (err) {
+    throw err[0]
+  } else {
+    db.User.find({where: {username: 'marcelo'}}).then(function (user){
+      if (!user) {
+        db.User.build({username: 'admin', password: 'admin'}).save();
+      };
+    });
+    
+    http.createServer(app).listen(app.get('port'), function(){
+      console.log('Express is listening on port ' + app.get('port'))
+    });
+  }
+})
 
 var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
+  , LocalStrategy = require('passport-local').Strategy
+  , db = require('./models')
+  
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    public.users.findById({username: username}, function (err, user) {
-        console.log(users);
+    //console.log("before:",  db.User);
+    //console.log("userskeys", Object.keys(myusers));
+    db.User.find({ username: username}).success(function (err, user) {
+        console.log("b4 myusers.findAll:", user);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
@@ -22,7 +51,7 @@ passport.use(new LocalStrategy(
       if (!user.validPassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
-      return done(null, user);
+      return done(null, "hello");
     });
   }
 ));
@@ -95,3 +124,5 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+//module.exports.User = User;
+

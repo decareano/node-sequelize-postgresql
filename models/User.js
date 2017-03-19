@@ -1,9 +1,12 @@
 "use strict"
 
 
-module.exports = function(sequelize, DataTypes) {
 
-    var myUsers = sequelize.define("users", {
+module.exports = function(sequelize, DataTypes) {
+	//console.log(Object.keys(DataTypes));
+	//console.log(sequelize);
+    var User = sequelize.define("users", {
+
         
     	username: {
 			type: DataTypes.STRING,
@@ -16,5 +19,7 @@ module.exports = function(sequelize, DataTypes) {
 }, {
 	tableName: 'users'
 	});
-	return myUsers;
+	return User;
 }
+
+//var app = require('../app.js')

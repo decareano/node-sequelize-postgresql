@@ -3,6 +3,7 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
+//var GetUsers = require("./User.js")
 var sequelize = new Sequelize(process.env.POSTGRESQL_LOCAL_DB, "", "", {
     host: process.env.POSTGRESQL_LOCAL_HOST,
     dialect: 'postgres',
@@ -23,19 +24,27 @@ fs
     .readdirSync(__dirname)
     .filter(function(file) {
         return (file.indexOf(".") !== 0) && (file !== "index.js");
+        
     })
     .forEach(function(file) {
         var model = sequelize["import"](path.join(__dirname, file));
         db[model.name] = model;
+        console.log(model);
     });
 
-Object.keys(db).forEach(function(modelName) {
-    if ("associate" in db[modelName]) {
-        db[modelName].associate(db);
-    }
-});
-
+// Object.keys(db).forEach(function(modelName) {
+//     if ("associate" in db[modelName]) {
+//         db[modelName].associate(db);
+//     }
+// });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 module.exports = db;
+//var myusers = GetUsers(sequelize, Sequelize.DataTypes);
+//module.exports = {
+    //db: db, 
+    //myusers: myusers
+
+
+
+
