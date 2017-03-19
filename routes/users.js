@@ -27,16 +27,16 @@ router.get('/login', function(req, res) {
 
 
 router.post('/login1', passport.authenticate('local' , { session: true }), function(req, res) {
-  console.log(models);
-  models.users
-        .build({
+  //console.log(models);
+  // models.users
+  //       .build({
 
             	
-		username: req.body.username,
-		password: req.body.password
-		})
+		// username: req.body.username,
+		// password: req.body.password
+		// })
 
-        .save()
+  //       .save()
         res.redirect('/users/' + req.user.username);
 });
 

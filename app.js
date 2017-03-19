@@ -7,73 +7,43 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
+var db = require('./models');
 //var myUsers = require('./User.js');
-//var Sequelize = require('sequelize');
-var myusers = require('./models/index.js').myusers;
+var Sequelize = require('sequelize');
+//Sequelize.prototype.authenticate = function() 
+db
+  .sequelize
+  .sync()
+  // .complete(function(err){
+    // .sequelize
+    // .prototype
+  .then(function(err) {
 
-// var User = sequelize.define('User', 
-// {
-//   username: DataTypes.STRING,
-//   password: DataTypes.STRING
-// })
-
-// User.sync();
-
-//var user = User.create({ username: "admin", password: "bolognese" });
-
-
-
-//var Model = require('../model/models.js');
+  if (err) {
+    throw err[0]
+  } else {
+    db.User.find({where: {username: 'marcelo'}}).then(function (user){
+      if (!user) {
+        db.User.build({username: 'admin', password: 'admin'}).save();
+      };
+    });
+    
+    http.createServer(app).listen(app.get('port'), function(){
+      console.log('Express is listening on port ' + app.get('port'))
+    });
+  }
+})
 
 var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-//     passport.use(new LocalStrategy({
-//         usernameField: 'username',
-//         passwordField: 'password'
-//     },
-//     (username, password, done) => {
-//         //log.debug("Login process:", username);
-//         return User.one("SELECT  username, password, id " +
-//             "FROM users " +
-//             "WHERE username=$1 AND password=$2", [username, password])
-//         .then((result)=> {
-//             return done(null, result);
-//         })
-//         .catch((err) => {
-//             log.error("/login: " + err);
-//             return done(null, false, {message:'Wrong user name or password'});
-//         });
-//     }));
-
-// passport.serializeUser((user, done)=>{
-//     //log.debug("serialize ", user);
-//     done(null, user.user_id);
-// });
-
-// passport.deserializeUser((id, done)=>{
-//     //log.debug("deserialize ", id);
-//     User.one("SELECT username, password, id FROM users " +
-//             "WHERE id = $1", [id])
-//     .then((user)=>{
-//       //log.debug("deserializeUser ", user);
-//       done(null, user);
-//     })
-//     .catch((err)=>{
-//       done(new Error(`User with the id ${id} does not exist`));
-//     })
-// });
-
-
-
-
+  , LocalStrategy = require('passport-local').Strategy
+  , db = require('./models')
+  
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    console.log("before",  myusers.name);
+    //console.log("before:",  db.User);
     //console.log("userskeys", Object.keys(myusers));
-    
-    
-    myusers.findAll({username: username}).then(function (err, user) {
-        console.log("before", user);
+    db.User.find({ username: username}).success(function (err, user) {
+        console.log("b4 myusers.findAll:", user);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
