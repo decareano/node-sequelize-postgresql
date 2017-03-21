@@ -5,34 +5,38 @@ var logger = require('morgan');51
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var http = require('http');
+//var User = require('./routes/users');
 var app = express();
+//var app = require('./app');
 var db = require('./models');
 //var myUsers = require('./User.js');
 var Sequelize = require('sequelize');
 //Sequelize.prototype.authenticate = function() 
 db
   .sequelize
-  .sync()
+  .authenticate()
+  //.sync()
   // .complete(function(err){
     // .sequelize
     // .prototype
   .then(function(err) {
-
-  if (err) {
-    throw err[0]
-  } else {
-    db.User.find({where: {username: 'marcelo'}}).then(function (user){
+    console.log(err);
+// 
+  // if (err) {
+  //   throw err[0]
+  // } else {
+    db.users.find({where: {username: 'marcelo', password: 'test'}}).then(function (user){
       if (!user) {
-        db.User.build({username: 'admin', password: 'admin'}).save();
+        db.users.build({username: 'admin', password: 'admin'}).save();
       };
     });
     
-    http.createServer(app).listen(app.get('port'), function(){
-      console.log('Express is listening on port ' + app.get('port'))
-    });
-  }
-})
+    // http.createServer(app).listen(app.get('port'), function(){
+    //   console.log('Express is listening on port ' + app.get('port'))
+    // });
+//   }
+ })
 
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
@@ -83,7 +87,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/login1', routes);
 app.use(passport.initialize());
 app.use(passport.session());
 
