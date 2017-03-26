@@ -1,18 +1,24 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');51
+var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
+var routes = require('./routes/users');
+//var routes = require('./routes/index');
 var http = require('http');
-//var User = require('./routes/users');
+var users = require('./routes/users');
 var app = express();
 //var app = require('./app');
 var db = require('./models');
 //var myUsers = require('./User.js');
 var Sequelize = require('sequelize');
 //Sequelize.prototype.authenticate = function() 
+var login = require('./routes/login');
+//var authenticate = require('./routes/authenticate')
+
+SALT_WORK_FACTOR = 12;
+
 db
   .sequelize
   .authenticate()
@@ -20,23 +26,23 @@ db
   // .complete(function(err){
     // .sequelize
     // .prototype
-  .then(function(err) {
-    console.log(err);
+  // .then(function(err) {
+  //   console.log(err);
 // 
   // if (err) {
   //   throw err[0]
   // } else {
-    db.users.find({where: {username: 'marcelo', password: 'test'}}).then(function (user){
+    db.users.find({where: {username: 'toto'}}).then(function (user){
       if (!user) {
         db.users.build({username: 'admin', password: 'admin'}).save();
       };
     });
     
-    // http.createServer(app).listen(app.get('port'), function(){
-    //   console.log('Express is listening on port ' + app.get('port'))
-    // });
-//   }
- })
+    http.createServer(app).listen(3000, function(){
+      console.log('Express is listening on port ' + this.address().port);
+    });
+  
+ // })
 
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
@@ -44,9 +50,12 @@ var passport = require('passport')
   
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    //console.log("before:",  db.User);
+    console.log("before:",  db.user);
     //console.log("userskeys", Object.keys(myusers));
-    db.User.find({ username: username}).success(function (err, user) {
+    db.users.find({where: {username: username}}).then(function (err, user) {
+      passwd = user ? user.password : ''
+      isMatch = db.users.validPassword(password, passwd, done, user)
+
         console.log("b4 myusers.findAll:", user);
       if (err) { return done(err); }
       if (!user) {
@@ -55,7 +64,7 @@ passport.use(new LocalStrategy(
       if (!user.validPassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
-      return done(null, "hello");
+      return done(null, user);
     });
   }
 ));
@@ -87,7 +96,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/login1', routes);
+app.use('/login', routes);
+//app.use('/authenticate', routes);
 app.use(passport.initialize());
 app.use(passport.session());
 
