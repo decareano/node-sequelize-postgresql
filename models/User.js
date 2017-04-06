@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 		dialect: 'postgres'
 	}
 	);
-	User.hook('beforeCreate', function(user, fn){
+	User.hook('beforeCreate', function(user, options, fn) {
 		console.log( 'fn is:', typeof fn, fn );
 	var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
 		return salt
@@ -53,5 +53,6 @@ module.exports = function(sequelize, DataTypes) {
 	};
 	return User;
 }
+
 
 //var app = require('../app.js')
