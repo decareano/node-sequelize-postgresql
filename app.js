@@ -32,15 +32,15 @@ db
   // if (err) {
   //   throw err[0]
   // } else {
-    db.users.find({where: {username: 'toto'}}).then(function (user){
-      if (!user) {
-        db.users.build({username: 'admin', password: 'admin'}).save();
-      };
-    });
+    // db.users.find({where: {username: 'toto'}}).then(function (user){
+    //   if (!user) {
+    //     db.users.build({username: 'admin', password: 'admin'}).save();
+    //   };
+    // });
     
-    http.createServer(app).listen(3000, function(){
-      console.log('Express is listening on port ' + this.address().port);
-    });
+    // http.createServer(app).listen(3000, function(){
+    //   console.log('Express is listening on port ' + this.address().port);
+    // });
   
  // })
 
@@ -50,13 +50,13 @@ var passport = require('passport')
   
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    console.log("before:",  db.user);
+    
     //console.log("userskeys", Object.keys(myusers));
     db.users.find({where: {username: username}}).then(function (err, user) {
       passwd = user ? user.password : ''
       isMatch = db.users.validPassword(password, passwd, done, user)
 
-        console.log("b4 myusers.findAll:", user);
+        console.log("b4 users.findAll:", users);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
