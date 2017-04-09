@@ -1,4 +1,6 @@
 "use strict"
+var bcrypt = require('bcrypt-nodejs')
+
 
 
 
@@ -16,10 +18,42 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 
 		},
-}, {
-	tableName: 'users'
+	},
+	{
+		classMethods: {
+			validPassword: function(password, passwd, done, user){
+				bcrypt.compare(password, passwd, function(err, isMatch){
+					if (err) console.log(err)
+						console.log(password, passwd);
+					if (isMatch) {
+						return done(null, user)
+					} else {
+						return done(null, false, {message: "username and password do not match"})
+					}
+				})
+			}
+		}
+	},
+	{
+		dialect: 'postgres'
+	}
+	);
+	User.hook('beforeCreate', function(user, options, fn) {
+		//console.log( 'fn is:', typeof fn, fn );
+	var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+		return salt
 	});
+	bcrypt.hash(user.password, salt, null, function(err, hash){
+		if(err) return next(err);
+		user.password = hash;
+		return fn(null, user)
+	});
+	})
+	{
+		tableName: 'users'
+	};
 	return User;
 }
+
 
 //var app = require('../app.js')

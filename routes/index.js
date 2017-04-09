@@ -5,17 +5,17 @@ var passport = require('passport');
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  //models.lab_inventory.all().then(function(taskList) {
-    res.render('index_login');
+// router.get('/', function(req, res) {
+//   //models.lab_inventory.all().then(function(taskList) {
+//     res.render('index_login');
 
-  //});
-});
+//   //});
+// });
 
-router.get('/login', function(req, res) {
-	res.render('login_form_username');
+// router.get('/login', function(req, res) {
+// 	res.render('login_form_username');
 
-});
+// });
 
 
 
