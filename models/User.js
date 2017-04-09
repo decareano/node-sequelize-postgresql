@@ -24,10 +24,11 @@ module.exports = function(sequelize, DataTypes) {
 			validPassword: function(password, passwd, done, user){
 				bcrypt.compare(password, passwd, function(err, isMatch){
 					if (err) console.log(err)
+						console.log(password, passwd);
 					if (isMatch) {
 						return done(null, user)
 					} else {
-						return done(null, false)
+						return done(null, false, {message: "username and password do not match"})
 					}
 				})
 			}
@@ -38,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
 	}
 	);
 	User.hook('beforeCreate', function(user, options, fn) {
-		console.log( 'fn is:', typeof fn, fn );
+		//console.log( 'fn is:', typeof fn, fn );
 	var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
 		return salt
 	});
