@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
-var expresession = require('express-session');
+var session = require('express-session');
 var routes = require('./routes/users');
 //var routes = require('./routes/index');
 var http = require('http');
@@ -36,13 +36,13 @@ db
   // } else {
     db.users.find({where: {username: 'toto'}}).then(function (user){
       if (!user) {
-        db.users.build({username: 'admin', password: 'admin'}).save();
+        db.users.build({username: 'nuchi', password: 'nov21'}).save();
       };
     });
     
-    http.createServer(app).listen(3000, function(){
-      console.log('Express is listening on port ' + this.address().port);
-    });
+    // http.createServer(app).listen(3000, function(){
+    //   console.log('Express is listening on port ' + this.address().port);
+    // });
   
  // })
 
@@ -54,16 +54,16 @@ var passport = require('passport')
   
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    console.log(username);
+    //console.log(done);
     
     //console.log("userskeys", Object.keys(myusers));
     db.users.find({where: {username: username}}).then(function (user) {
-      console.log(user);
+      //console.log(user);
       passwd = user ? user.password : ''
       db.users.validPassword(password, passwd, done, user)
 
         //console.log("b4 users.findAll:", users);
-      //if (err) { return done(err); }
+      // if (err) { return done(err); }
       // if (!user) {
       //   return done(null, false, { message: 'Incorrect username.' });
       // }
@@ -77,12 +77,15 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  console.log(user.id);
+  done(null, user.id);  //saved to session req.session.passport.user = {id:'..'}
 });
 
 passport.deserializeUser(function(id, done) {
+
   User.findById(id, function(err, user) {
-    done(err, user);
+    //console.log(User);
+    done(err, user);   //user object attaches to the request as req.user
   });
 });
 
@@ -99,7 +102,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expresession({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+//app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
