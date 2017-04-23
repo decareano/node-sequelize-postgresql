@@ -20,12 +20,17 @@ router.get('/login', function(req, res) {
   	//res.redirect('/' + req.user);
 });
 
+router.get('/home_page', function(req, res) {
+
+	res.render('home_page');
+});
+
 // router.post('/login', (req, res) => passport.authenticate('local', 
 // { successRedirect: '/', failureRedirect: '/login', })(req, res));  //there is an issue with passport
 
 
 router.post('/authenticate', passport.authenticate('local', 
-								{ successRedirect: '/',
+								{ successRedirect: '/home_page',
                                    failureRedirect: '/login',
                                    failureFlash: true })
 );

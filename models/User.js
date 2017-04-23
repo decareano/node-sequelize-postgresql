@@ -23,8 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 		classMethods: {
 			validPassword: function(password, passwd, done, user){
 				bcrypt.compare(password, passwd, function(err, isMatch){
-					if (err) console.log(err)
-						console.log(password, passwd);
+					
 					if (isMatch) {
 						return done(null, user)
 					} else {
