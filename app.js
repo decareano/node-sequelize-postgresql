@@ -18,7 +18,7 @@ var Sequelize = require('sequelize');
 //Sequelize.prototype.authenticate = function() 
 var login = require('./routes/login');
 //var authenticate = require('./routes/authenticate')
-
+//var home = require('./routes/home_page');
 SALT_WORK_FACTOR = 12;
 
 db
@@ -34,11 +34,11 @@ db
   // if (err) {
   //   throw err[0]
   // } else {
-    db.users.find({where: {username: 'toto'}}).then(function (user){
-      if (!user) {
-        db.users.build({username: 'nuchi', password: 'nov21'}).save();
-      };
-    });
+    // db.users.find({where: {username: 'toto'}}).then(function (user){
+    //   if (!user) {
+    //     db.users.build({username: 'nuchi', password: 'nov21'}).save();
+    //   };
+    // });
     
     // http.createServer(app).listen(3000, function(){
     //   console.log('Express is listening on port ' + this.address().port);
@@ -113,6 +113,7 @@ app.use(flash());
 
 app.use('/', routes);
 app.use('/login', routes);
+
 //app.use('/authenticate', routes);
 //app.use(passport.initialize());
 //app.use(passport.session());
