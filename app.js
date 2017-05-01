@@ -54,15 +54,16 @@ var passport = require('passport')
   
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    //console.log(done);
+    console.log('inside_passport:' , username, password);
     
     //console.log("userskeys", Object.keys(myusers));
     db.users.find({where: {username: username}}).then(function (user) {
-      //console.log(user);
+      console.log(user);
       passwd = user ? user.password : ''
-      db.users.validPassword(password, passwd, done, user)
+      isMatch = db.users.validPassword(password, passwd, done, user)
+      //db.users.validPassword(password, passwd, done, user);
 
-        //console.log("b4 users.findAll:", users);
+      //   console.log("b4 users.findAll:", users);
       // if (err) { return done(err); }
       // if (!user) {
       //   return done(null, false, { message: 'Incorrect username.' });
@@ -71,13 +72,15 @@ passport.use(new LocalStrategy(
       // if (!isMatch) { 
       //   return done(null, false, { message: 'Incorrect password.' });
       // }
-      //return done(null, user);
+      // return done(null, user);
     });
   }
 ));
 
+//good code before april29
+
 passport.serializeUser(function(user, done) {
-  console.log(user.id);
+  //console.log(user.id);
   done(null, user.id);  //saved to session req.session.passport.user = {id:'..'}
 });
 
@@ -88,6 +91,27 @@ passport.deserializeUser(function(id, done) {
     done(err, user);   //user object attaches to the request as req.user
   });
 });
+
+
+//alternative code: april28
+
+// passport.serializeUser(function(user, done){
+//   done(null, user);
+
+// });
+
+// passport.deserializeUser(function(user, done){
+//   db.User.find({where: {id: user.id}}).success(function(user){
+//     console.log(User);
+
+//     done(null, user);
+//   }).error(function(err){
+//     done(err, null)
+//   });
+
+
+
+// });
 
 
 
@@ -102,7 +126,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(session({ name: 'session_id', secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -113,6 +137,9 @@ app.use(flash());
 
 app.use('/', routes);
 app.use('/login', routes);
+
+
+
 
 //app.use('/authenticate', routes);
 //app.use(passport.initialize());
