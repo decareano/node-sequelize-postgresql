@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var models = require("../models");
+var db = require('../models');
 
 
 
@@ -35,7 +36,28 @@ router.post('/authenticate', passport.authenticate('local',
                                    failureFlash: true })
 );
 
-							
+
+router.get('/signup', function(req, res) {
+  res.render("signup.ejs");
+});
+
+
+// router.get('/signin', function(req, res) {
+//   res.render("signin.ejs");
+// });
+
+router.post('/signin', function(req, res){
+  db.users.find({where: {username: req.username}}).then(function (user){
+    if(!user) {
+      db.users.create({username: req.body.username, password: req.body.password}).error(function(err){
+        console.log(err);
+      });
+    } else {
+      res.redirect('/signup')
+    }
+  })
+  res.redirect('/')
+});
 
 
 
