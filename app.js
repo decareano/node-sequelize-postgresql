@@ -9,7 +9,7 @@ var session = require('express-session');
 var routes = require('./routes/users');
 //var routes = require('./routes/index');
 var http = require('http');
-var users = require('./routes/users');
+//var users = require('./routes/users');
 var app = express();
 //var app = require('./app');
 var db = require('./models');
@@ -84,13 +84,13 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);  //saved to session req.session.passport.user = {id:'..'}
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
 
-  User.findById(id, function(err, user) {
+  //User.findById(id, function(err, user) {
     //console.log(User);
-    done(err, user);   //user object attaches to the request as req.user
+    done(null, user);   //user object attaches to the request as req.user
   });
-});
+//});
 
 
 //alternative code: april28
@@ -132,10 +132,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+//session printing
+app.use(function printSession(req, res, next) {
+  console.log('req.session', req.session);
+  return next();
+});
 
 
 
 app.use('/', routes);
+app.use('/users', routes);
+
 app.use('/login', routes);
 
 
