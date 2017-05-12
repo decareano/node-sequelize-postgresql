@@ -143,8 +143,13 @@ app.use(function printSession(req, res, next) {
 app.use('/', routes);
 app.use('/users', routes);
 
-app.use('/login', routes);
+app.use('/login', login.IsAuthenticated);
+//app.get('/logout', login.destroySession);
 
+app.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.send("logout success!");
+});
 
 
 
