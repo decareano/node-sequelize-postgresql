@@ -9,7 +9,7 @@ var session = require('express-session');
 var routes = require('./routes/users');
 //var routes = require('./routes/index');
 var http = require('http');
-//var users = require('./routes/users');
+var users = require('./routes/users');
 var app = express();
 //var app = require('./app');
 var db = require('./models');
@@ -133,23 +133,27 @@ app.use(passport.session());
 app.use(flash());
 
 //session printing
-app.use(function printSession(req, res, next) {
-  console.log('req.session', req.session);
-  return next();
-});
+// app.use(function printSession(req, res, next) {
+//   console.log('req.session', req.session);
+//   return next();
+// });
 
 
 
-app.use('/', routes);
+
 app.use('/users', routes);
 
-app.use('/login', login.IsAuthenticated);
-//app.get('/logout', login.destroySession);
+//app.use('/login', login.IsAuthenticated);
+app.get('/logout', login.destroySession);
 
-app.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.send("logout success!");
-});
+
+app.get('/signup', routes);
+app.post('/signin', routes);
+app.use('/', routes);
+// app.get('/logout', function (req, res) {
+//   req.session.destroy();
+//   res.send("logout success!");
+// });
 
 
 
