@@ -11,6 +11,7 @@ a {
 	display: block;
 	width: 40%;
 	height: 36px;
+	
 
 }
 
@@ -21,4 +22,10 @@ a {
 
 h1 {
 	color: white;
+}
+
+.navbar-inverse {
+    color: #009ACD;
+    background-color: #FFFFFF;
+    border-radius: 50px;
 }
