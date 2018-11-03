@@ -144,7 +144,7 @@ app.use(flash());
 app.use('/users', routes);
 
 //app.use('/login', login.IsAuthenticated);
-app.get('/logout', login.destroySession);
+app.use('/logout', login.destroySession);
 
 
 app.get('/signup', routes);

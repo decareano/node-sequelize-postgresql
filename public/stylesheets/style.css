@@ -12,13 +12,10 @@ a {
 	width: 40%;
 	height: 36px;
 	
-
 }
 
-/*.navbar-inverse {
-	background-color: #00FFFF
 
-}*/
+
 
 h1 {
 	color: white;
@@ -28,4 +25,5 @@ h1 {
     color: #009ACD;
     background-color: #FFFFFF;
     border-radius: 50px;
+    padding-left: 20px;
 }
